@@ -22,6 +22,7 @@ export default function Home() {
 
       <div className={styles.grid}>
         <button
+          key={1}
           className={styles.card}
           onClick={async () => {
             fetch("/across/available-routes")
@@ -37,23 +38,7 @@ export default function Home() {
         </button>
 
         <button
-          className={styles.card}
-          onClick={async () => {
-            fetch(
-              "/across/limits?token=0x7f5c764cbc14f9669b88837ca1490cca17c31607&destinationChainId=42161"
-            )
-              .then((response) => {
-                return response.json();
-              })
-              .then((data) => setResponse(data))
-              .catch(console.log);
-          }}
-        >
-          <h2>Limits</h2>
-          <p>To get limits of the transactions</p>
-        </button>
-
-        <button
+          key={2}
           className={styles.card}
           onClick={async () => {
             fetch(
@@ -69,10 +54,30 @@ export default function Home() {
           <h2>Suggested Fees</h2>
           <p>To get suggested fees for bridging</p>
         </button>
+
+        <button
+          key={3}
+          className={styles.card}
+          onClick={async () => {
+            fetch(
+              "/across/limits?token=0x7f5c764cbc14f9669b88837ca1490cca17c31607&destinationChainId=42161"
+            )
+              .then((response) => {
+                return response.json();
+              })
+              .then((data) => setResponse(data))
+              .catch(console.log);
+          }}
+        >
+          <h2>Limits</h2>
+          <p>To get limits of the transactions</p>
+        </button>
       </div>
 
       <div className={styles.center}>
-        <span className={styles.code}>{JSON.stringify(response)}</span>
+        <span className={styles.card}>
+          {JSON.stringify(response, undefined, 3)}
+        </span>
       </div>
     </main>
   );

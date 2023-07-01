@@ -74,12 +74,11 @@
 
 .center {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   padding: 4rem 0;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .center::before {
